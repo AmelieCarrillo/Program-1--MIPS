@@ -1,1 +1,87 @@
+# ------------------- Addition -------------------
+    add $t0, $s0, $s1        # $t0 = $s0 + $s1
+    li $v0, 4                #print syscall
+    la $a0, newLine          # print newline
+    syscall
+    
+    li $v0, 4                # syscall for print string
+    la $a0,addition
+    syscall
+    
+    move $a0, $t0            # load result
+    li $v0, 1                # syscall for print integer
+    syscall
+    
+# ------------------- Subtraction -------------------
+    sub $t0, $s0, $s1        # $t0 = $s0 - $s1
+    li $v0, 4                #print syscall
+    la $a0, newLine          # print newline
+    syscall
+    
+    li $v0, 4                # syscall for print string
+    la $a0,subtraction
+    syscall
+    
+    move $a0, $t0            # load result
+    li $v0, 1                # syscall for print integer
+    syscall
+    
+# ------------------- Multiplication -------------------
+    mul $t0, $s0, $s1        # $t0 = $s0 * $s1
+    li $v0, 4                #print syscall
+    la $a0, newLine          # print newline
+    syscall
+    
+    li $v0, 4                # syscall for print string
+    la $a0,multiplication
+    syscall
+    
+    move $a0, $t0            # load result
+    li $v0, 1                # syscall for print integer
+    syscall
+    
+ # ------------------- Division-------------------
+    div $t0, $s0, $s1        # $t0 = $s0 / $s1
+    li $v0, 4                #print syscall
+    la $a0, newLine          # print newline
+    syscall
+    
+    li $v0, 4                # syscall for print string
+    la $a0,division
+    syscall
+    
+    move $a0, $t0            # load result
+    li $v0, 1                # syscall for print integer
+    syscall   
+    
+    #NewLine
+    li $v0, 4	
+    la $a0, newLine 
+    syscall
+# ------------------- Conditions -------------------
+	beq $s0, $s1, equal_label # if $s0 == $s1, branch to equal_label
+	bne $s0, $s1, diff_label  # if $s0 != $s1, branch to diff_label
 
+equal_label:
+	li $v0, 4           # print syscall
+	la $a0, newLine     # print newline
+	syscall
+	
+	li $v0, 4           # syscall for print string
+	la $a0, userEqual
+	syscall
+	# Exit program
+    	li $v0, 10               # syscall code for exit
+    	syscall
+
+diff_label:
+	li $v0, 4           # print syscall
+	la $a0, newLine     # print newline
+	syscall
+	
+	li $v0, 4           # syscall for print string
+	la $a0, userDiff
+	syscall
+	# Exit program
+    	li $v0, 10               
+    	syscall
