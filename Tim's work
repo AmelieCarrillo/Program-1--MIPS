@@ -1,1 +1,68 @@
+.data
+prompt1: .asciiz "Enter the first integer: "
+prompt2: .asciiz "Enter the second integer: "
+output1: .asciiz "Your first number is: "
+output2: .asciiz "Your second number is: "
 
+newLine: .asciiz "\n"
+
+addition: .asciiz "Addition result: "
+subtraction: .asciiz "Subtraction result: "
+multiplication: .asciiz "Multiplication result: "
+division: .asciiz "Division result: "
+
+userEqual: .asciiz "User inputs are the same"
+userDiff: .asciiz "User inputs are different"
+
+
+.text
+main:
+
+#------------------prompt1-----------------------
+    li $v0, 4     #syscall for print string
+    la $a0, prompt1   #load address prompt1
+    syscall   #execute print string
+
+    li $v0, 5   #syscall for read_int
+        syscall        #read integer input
+        move $s0, $v0    #move the input to $s0
+
+        #output your number is:
+        li $v0, 4    #print string
+        la $a0, output1  #out put the frst int
+        syscall        #print Your number is:
+
+
+        move $a0, $s0 #load $s0 into $a0 
+        li $v0, 1    #syscall for print_int
+        syscall        #print newLine
+
+
+        li $v0, 4
+        la $a0, newLine
+        syscall
+
+
+#-----------------prompt 2------------------
+    li $v0, 4     #syscall for print string
+    la $a0, prompt2   # load address prompt2
+    syscall   # execute print string
+
+    li $v0, 5   #syscall for read_int
+        syscall        #read integer input
+        move $s1, $v0    #move the input to $s1
+
+        #output your number is:
+        li $v0, 4    #print string
+        la $a0, output2  #output the 2nd int
+        syscall        #print Your number is:
+
+
+        move $a0, $s1 #load $s1 into $a0
+        li $v0, 1    #syscall for print_int
+        syscall        #print newLine
+
+
+        li $v0, 4    #
+        la $a0, newLine   #new Line
+        syscall
